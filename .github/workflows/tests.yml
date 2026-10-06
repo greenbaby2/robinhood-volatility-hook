@@ -17,3 +17,5 @@ jobs:
         shell: pwsh
         run: '& .\node_modules\@foundry-rs\forge-win32-amd64\bin\forge.exe test -vv'
       - run: npm run test:signing
+      - run: node --test test/mainnet-signing.test.cjs
+      - run: node --test test/mainnet-calldata.test.cjs

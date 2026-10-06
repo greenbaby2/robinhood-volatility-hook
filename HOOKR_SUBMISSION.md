@@ -48,6 +48,8 @@ The pool is a completed rehearsal with no remaining liquidity, not an active tra
 
 ## Validation and limitations
 
+A separate cumulative-signal mainnet pilot candidate is now documented in MAINNET_PILOT.md. It has local fork evidence only. This submission's testnet address and pinned original source commit do not represent that revised candidate; submit any revised candidate with its own source commit and deployment evidence.
+
 All 26 Solidity tests passed, including real PoolManager settlement tests and 1,024 fuzz cases across two properties. The split-trade test demonstrates avoidance of the surge signal; see MAINNET_ASSESSMENT.md. Seven local browser-signing tests passed using a mocked provider. The lifecycle covers both trade directions, royalty redemption, partial fills, min-output checks, unauthorized claims, failed ETH reception, fee collection, complete liquidity removal, and approval revocation.
 
 Security status: unaudited research prototype. Official Universal Router and PositionManager integration is not validated. No production routing approval, independent economic validation, organic volume, or profitability is claimed. Manipulable endogenous price signals and first-trade adverse selection remain limitations. Testnet results are not a mainnet safety endorsement.

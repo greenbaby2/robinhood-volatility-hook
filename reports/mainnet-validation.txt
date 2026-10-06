@@ -1,0 +1,82 @@
+No files changed, compilation skipped
+
+Ran 10 tests for test/VolatilityRoyaltyHook.t.sol:VolatilityRoyaltyHookTest
+[PASS] testBaseThenReactiveFee() (gas: 127550)
+[PASS] testDecayToBase() (gas: 123603)
+[PASS] testExactOutputRejected() (gas: 15916)
+[PASS] testExtremeTickMovementCaps() (gas: 132437)
+[PASS] testFuzzFeeBound(uint24,uint32) (runs: 512, μ: 7175, ~: 7091)
+[PASS] testPoolIsolation() (gas: 149417)
+[PASS] testRoyaltyBothDirections() (gas: 125404)
+[PASS] testStaticFeeRejected() (gas: 18781)
+[PASS] testTinySwapDoesNotResetSignal() (gas: 132088)
+[PASS] testUnauthorizedCallerRejected() (gas: 16212)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 11.41ms (8.54ms CPU time)
+
+Ran 2 tests for test/LifecycleScript.t.sol:LifecycleScriptTest
+[PASS] testCompleteDeploymentScript() (gas: 29236256)
+[PASS] testDeploymentScriptRejectsMainnet() (gas: 10275309)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 21.22ms (21.04ms CPU time)
+
+Ran 14 tests for test/Integration.t.sol:IntegrationTest
+[PASS] testCollectFeesAndRemoveAllLiquidity() (gas: 424155)
+[PASS] testDecayAnchorSurvivesDustObservations() (gas: 4125157)
+[PASS] testERC20PairBothDirections() (gas: 1280989)
+[PASS] testExpiredSwapAndLiquidityBoundsRevert() (gas: 126994)
+[PASS] testFuzzRoundTripSettlement(uint96,uint16) (runs: 512, μ: 302765, ~: 304140)
+[PASS] testMainnetRehearsalContractsRejected() (gas: 120097)
+[PASS] testMinOutputIncludesRoyaltyAndRevertsAtomically() (gas: 344738)
+[PASS] testNativeBuySettlesRoyaltyAndTokenClaim() (gas: 215248)
+[PASS] testPartialFillChargesActualOutputAndRefundsETH() (gas: 191739)
+[PASS] testPositionCannotBeRemovedByOtherWallet() (gas: 16006)
+[PASS] testRejectedNativeClaimDoesNotBlockTrading() (gas: 348225)
+[PASS] testSplitTradesAvoidSurgeSignal() (gas: 7511369)
+[PASS] testTokenSellSettlesNativeClaim() (gas: 210576)
+[PASS] testUnauthorizedAndExcessClaimRevert() (gas: 215380)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 57.04ms (94.33ms CPU time)
+
+Ran 14 tests for test/CumulativeVolatilityHook.t.sol:CumulativeVolatilityHookTest
+[PASS] testBaseThenReactiveFee() (gas: 127662)
+[PASS] testDecayToBase() (gas: 123784)
+[PASS] testExactOutputRejected() (gas: 15938)
+[PASS] testExtremeTickMovementCaps() (gas: 132672)
+[PASS] testFragmentsAccumulate() (gas: 1268873)
+[PASS] testFuzzDecayComposition(uint24,uint16,uint16) (runs: 512, μ: 8944, ~: 8902)
+[PASS] testFuzzFeeBound(uint24,uint32) (runs: 512, μ: 7374, ~: 7265)
+[PASS] testPoolIsolation() (gas: 149329)
+[PASS] testReversalsAccumulateAndIdleResets() (gas: 153443)
+[PASS] testRoyaltyBothDirections() (gas: 125769)
+[PASS] testStaticFeeRejected() (gas: 18737)
+[PASS] testTinySwapDoesNotResetSignal() (gas: 132614)
+[PASS] testUnauthorizedCallerRejected() (gas: 16234)
+[PASS] testZeroMovementDoesNotExtendDecay() (gas: 804408)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 78.23ms (35.06ms CPU time)
+
+Ran 4 tests for test/MainnetFork.t.sol:MainnetForkTest
+[PASS] testForkExpiredPermitAndDeadline() (gas: 180343)
+[PASS] testForkFragmentedTradesBuildSignal() (gas: 1704145)
+[PASS] testForkMinOutRollbackAndOwnership() (gas: 287841)
+[PASS] testForkMintSwapClaimBurnRevoke() (gas: 519174)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 227.85ms (6.65ms CPU time)
+
+Ran 2 tests for test/MainnetPilotScript.t.sol:MainnetPilotScriptTest
+[PASS] testForkExactScriptsDeployFundExit() (gas: 41891803)
+[PASS] testWrongChainRejected() (gas: 3714710)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 241.70ms (241.49ms CPU time)
+
+╭------------------------------+--------+--------+---------╮
+| Test Suite                   | Passed | Failed | Skipped |
++==========================================================+
+| CumulativeVolatilityHookTest | 14     | 0      | 0       |
+|------------------------------+--------+--------+---------|
+| IntegrationTest              | 14     | 0      | 0       |
+|------------------------------+--------+--------+---------|
+| LifecycleScriptTest          | 2      | 0      | 0       |
+|------------------------------+--------+--------+---------|
+| MainnetForkTest              | 4      | 0      | 0       |
+|------------------------------+--------+--------+---------|
+| MainnetPilotScriptTest       | 2      | 0      | 0       |
+|------------------------------+--------+--------+---------|
+| VolatilityRoyaltyHookTest    | 10     | 0      | 0       |
+╰------------------------------+--------+--------+---------╯
+

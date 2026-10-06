@@ -1,0 +1,23 @@
+name: Mainnet fork rehearsal
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fork:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node scripts/bootstrap.cjs
+      - name: Fork lifecycle and script tests (no broadcast)
+        shell: pwsh
+        env:
+          RUN_MAINNET_FORK: 'true'
+          FORK_BLOCK: '81389284'
+        run: '& .\node_modules\@foundry-rs\forge-win32-amd64\bin\forge.exe test --match-path "test/Mainnet*.t.sol" -vv'

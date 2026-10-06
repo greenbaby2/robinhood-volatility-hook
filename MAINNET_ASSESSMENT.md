@@ -1,10 +1,12 @@
 # Mainnet feasibility and liquidity explanation
 
+Update: [MAINNET_PILOT.md](MAINNET_PILOT.md) documents a revised cumulative signal, passing official-periphery fork rehearsals and a roughly $23 technical pilot plan. The economic criticism of the original per-trade signal below remains valid for `VolatilityRoyaltyHook`; the new `CumulativeVolatilityHook` addresses same-timestamp fragmentation but does not establish profitability or oracle-based LVR protection. No actual mainnet deployment or funding has occurred.
+
 The hook works mechanically on testnet, but its profitability and LVR protection are not established. With a budget below $250, the current recommendation is to publish the research, improve the fee design, and avoid funding a new custom pool as an income strategy yet. A small mainnet deployment can demonstrate code availability; deploying the hook alone earns nothing.
 
 ## What you would deploy and fund
 
-The same wallet can deploy on Robinhood mainnet, chain 4663, using its mainnet ETH. Testnet contracts, approvals, and balances do not carry over. The observed mainnet native balance was approximately 0.0171971 ETH; that is not a full portfolio valuation.
+The same wallet can deploy on Robinhood mainnet, chain 4663, using its mainnet ETH. Testnet contracts, approvals, and balances do not carry over. Refresh balances with the local preflight before preparing transactions.
 
 1. Deploy the hook against the existing canonical Uniswap v4 PoolManager on mainnet. Do not deploy the rehearsal PoolManager, faucet token, or owner-only test router as production infrastructure.
 2. Create a new pool for two existing assets, specifying your hook in its PoolKey. This creates a pool inside PoolManager, not a new ERC-20 token or a separate v3-style pair contract.

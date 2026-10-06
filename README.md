@@ -4,6 +4,8 @@ This project evaluates Gemini's dynamic-fee and developer-royalty proposal. It i
 
 Start with [the testnet setup and costs](TESTNET.md). Read [the mainnet feasibility assessment](MAINNET_ASSESSMENT.md) before considering real capital. The broader strategy is in [the review and deployment roadmap](ROADMAP.md).
 
+The new [WETH/USDG pilot handoff](MAINNET_PILOT.md) covers `CumulativeVolatilityHook`, official periphery fork tests, capped funding/exit scripts, mainnet preflight and a separate wallet signing page. No real mainnet transactions have been sent. The original prototype and its testnet evidence below remain available for comparison.
+
 ## Prototype behavior
 
 `src/VolatilityRoyaltyHook.sol` serves dynamic-fee pools and exact-input swaps only. LP fees start at 0.15% and cap at 1%. After a swap, it replaces the signal only if that swap's tick movement exceeds the decayed prior signal. The next swap pays a fee based on that signal. Linear decay expires 60 seconds after the signal's anchor; dust observations do not reset the anchor. Parameters are research choices, not calibrated trading recommendations.
