@@ -28,7 +28,7 @@ Addresses are in `src/mainnet/PilotActions.sol`; local verification is in `signe
 
 ## Evidence and repeatable checks
 
-The fork is pinned to Robinhood block 81389284. It uses real deployed token/periphery code and storage. Wallet token balances are **artificially seeded only inside tests**, and no transaction is broadcast. Tests cover:
+The initial fork evidence used Robinhood block 81389284. The repeat runner selects and records a recent block because the public RPC prunes historical state; an exact older-block rerun requires an archive RPC or a complete existing local cache. It uses real deployed token/periphery code and storage. Wallet token balances are **artificially seeded only inside tests**, and no transaction is broadcast. Tests cover:
 
 - Exact deployment, funding and exit scripts, NFT ownership and approval revocation.
 - Atomic initialize + fixed-liquidity mint through the official PositionManager.
@@ -39,8 +39,8 @@ The fork is pinned to Robinhood block 81389284. It uses real deployed token/peri
 ```powershell
 npm.cmd ci --ignore-scripts
 npm.cmd run bootstrap
-$env:RUN_MAINNET_FORK='true'
 & '.\node_modules\@foundry-rs\forge-win32-amd64\bin\forge.exe' test --summary
+node scripts/run-mainnet-fork.cjs
 node scripts/mainnet-preflight.cjs
 ```
 
