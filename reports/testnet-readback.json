@@ -1,0 +1,35 @@
+{
+  "chainId": 46630,
+  "block": 129668987,
+  "checkedAt": "2026-10-06T05:13:19.180Z",
+  "wallet": "0xfe6fac6620c89f7dda96d1b3c34300c75abbe6b8",
+  "addresses": {
+    "manager": "0x8535a86fdae3461e739a386c9bbbace29b9db69c",
+    "token": "0xba7ae894dea95b1ded46cad070011e2bd500c9bc",
+    "router": "0x7efbc5658509e32a0594be4f511ce1ff9cabd5d0",
+    "hook": "0x2461be785303ad46678fc0d10268ec72365c50c4"
+  },
+  "checks": {
+    "hookHasCode": true,
+    "hookRuntimeMatches": true,
+    "routerHasCode": true,
+    "routerRuntimeMatches": true,
+    "authorMatches": true,
+    "managerMatches": true,
+    "routerOwnerMatches": true,
+    "routerManagerMatches": true,
+    "royaltyTenBps": true,
+    "permissionBits": true,
+    "claimsCleared": true,
+    "approvalRevoked": true,
+    "liquidityRemoved": true
+  },
+  "nativeClaimWei": "0",
+  "tokenClaimRaw": "0",
+  "routerAllowance": "0",
+  "poolId": "0x6afec37a6a83d453891bfc1ef5a6544592685019666ede48672619af58299b48",
+  "poolLiquidity": "0",
+  "walletNonce": 125,
+  "walletBalanceTestETH": 0.011398110739999998,
+  "allChecksPassed": true
+}

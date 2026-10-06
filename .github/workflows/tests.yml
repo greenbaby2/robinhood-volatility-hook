@@ -1,0 +1,19 @@
+name: Test research hook
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node scripts/bootstrap.cjs
+      - name: Solidity tests
+        shell: pwsh
+        run: '& .\node_modules\@foundry-rs\forge-win32-amd64\bin\forge.exe test -vv'
+      - run: npm run test:signing

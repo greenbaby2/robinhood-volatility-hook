@@ -1,0 +1,18 @@
+{
+  "name": "hookr-volatility-research",
+  "private": true,
+  "scripts": {
+    "compile": "node scripts/compile.cjs",
+    "prepare-signing": "node scripts/prepare-signing.cjs",
+    "signing": "node scripts/signing-server.cjs",
+    "test:signing": "node --test test/signing.test.cjs",
+    "bootstrap": "node scripts/bootstrap.cjs",
+    "screen-pairs": "node scripts/screen-pairs.cjs"
+  },
+  "devDependencies": {
+    "@foundry-rs/forge-win32-amd64": "1.7.1",
+    "solc": "0.8.26",
+    "js-sha3": "0.8.0"
+  },
+  "overrides": {"tmp":"0.2.7"}
+}

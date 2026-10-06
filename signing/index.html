@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robinhood Testnet Rehearsal</title>
+<style>body{font:16px/1.6 system-ui;background:#111827;color:#e5e7eb;max-width:900px;margin:36px auto;padding:0 24px}h1{font-size:30px}button{padding:12px 18px;background:#a7f3d0;color:#111827;border:0;border-radius:6px;margin:8px 8px 8px 0;font:inherit;cursor:pointer}button:disabled{opacity:.4;cursor:default}code{overflow-wrap:anywhere}li{padding:5px}#status{white-space:pre-wrap;background:#1f2937;padding:16px;border-radius:8px}small{color:#cbd5e1}.done{color:#6ee7b7}.current{color:#fcd34d}a{color:#93c5fd}</style>
+</head><body><h1>Robinhood testnet rehearsal</h1>
+<p>Deploy a private test stack, add a small amount of test liquidity, trade both ways, claim royalties, then remove the liquidity and revoke approval. These are 16 separate transactions. Confirm each in your browser wallet.</p>
+<p><strong>Testnet only · Chain 46630 · No real tokens required</strong><br>This rehearsal uses its own Uniswap v4 PoolManager. It does not list a pool on Hookr or the Uniswap app.</p>
+<p>Wallet: <code id="wallet"></code><br>Manifest: <small id="digest"></small></p>
+<p>Temporary liquidity input is capped at 0.0004 test ETH, plus a 0.00001 test ETH buy. Gas is additional. The completed rehearsal returns liquidity to your wallet. If interrupted, keep this page and its transaction record to resume.</p>
+<button id="connect" disabled>Connect browser wallet</button><button id="next" disabled>Sign next transaction</button><button id="export" disabled>Save receipts</button>
+<div id="status" role="status">Loading unsigned transactions…</div><ol id="steps"></ol>
+<p><small>No seed phrase or private key belongs here. All signing happens in your wallet. Refresh to check an in-flight transaction. If your wallet nonce changes outside this flow, stop and regenerate the plan. A browser wallet extension is required.</small></p>
+<script src="/app.js"></script></body></html>
