@@ -49,4 +49,4 @@ The liquidity budget is capital exposed to market and contract risk, not a gas c
 
 ## Publication status
 
-The local project has source, MIT licensing for original files, upstream attribution, pinned dependencies, a restore script, tests, a proposed CI workflow, and deployment evidence. A public GitHub repository requires a connected account. Intended repository name: `robinhood-volatility-hook`. Hookr submission should describe an unaudited experimental fee hook, not claim proven MEV capture or guaranteed returns.
+The local project has source, MIT licensing for original files, upstream attribution, pinned dependencies, a restore script, tests, a proposed CI workflow, and deployment evidence. Public repository: https://github.com/greenbaby2/robinhood-volatility-hook. Reviewed source commit: `0e078775d044e527134c40f75ec9ddc373623c06`. Hookr submission should describe an unaudited experimental fee hook, not claim proven MEV capture or guaranteed returns.

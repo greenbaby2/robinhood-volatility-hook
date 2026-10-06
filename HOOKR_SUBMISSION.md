@@ -12,15 +12,15 @@ External hook review for VolatilityRoyaltyHook with Robinhood testnet evidence
 
 ## Source and dependencies
 
-Public repository: REQUIRED BEFORE SUBMISSION
+Public repository: https://github.com/greenbaby2/robinhood-volatility-hook
 
-Exact commit: REQUIRED BEFORE SUBMISSION
+Exact reviewed source commit: 0e078775d044e527134c40f75ec9ddc373623c06 (https://github.com/greenbaby2/robinhood-volatility-hook/tree/0e078775d044e527134c40f75ec9ddc373623c06)
 
 Hook contract: `src/VolatilityRoyaltyHook.sol`
 
 Factory: `src/HookFactory.sol`
 
-Compiler: Solidity 0.8.26, Cancun, optimizer enabled with 200 runs. Dependencies are pinned in `dependencies.lock.json` and `package-lock.json`. The contract builds on OpenZeppelin BaseHook and Uniswap v4-core; it is not claimed as a wholly original hook framework. Original project source currently uses MIT SPDX identifiers. Preserve third-party licenses and add the repository license file before publication.
+Compiler: Solidity 0.8.26, Cancun, optimizer enabled with 200 runs. Dependencies are pinned in `dependencies.lock.json` and `package-lock.json`. The contract builds on OpenZeppelin BaseHook and Uniswap v4-core; it is not claimed as a wholly original hook framework. Original project source currently uses MIT SPDX identifiers. The repository includes LICENSE and THIRD_PARTY_NOTICES.md; upstream licenses remain applicable.
 
 ## Behavior and permissions
 
@@ -48,7 +48,7 @@ The pool is a completed rehearsal with no remaining liquidity, not an active tra
 
 ## Validation and limitations
 
-The original 25 Solidity tests passed, including real PoolManager settlement tests and 1,024 fuzz cases across two properties. A further test demonstrates split-trade avoidance of the surge signal; see MAINNET_ASSESSMENT.md. Seven local browser-signing tests passed using a mocked provider. The lifecycle covers both trade directions, royalty redemption, partial fills, min-output checks, unauthorized claims, failed ETH reception, fee collection, complete liquidity removal, and approval revocation.
+All 26 Solidity tests passed, including real PoolManager settlement tests and 1,024 fuzz cases across two properties. The split-trade test demonstrates avoidance of the surge signal; see MAINNET_ASSESSMENT.md. Seven local browser-signing tests passed using a mocked provider. The lifecycle covers both trade directions, royalty redemption, partial fills, min-output checks, unauthorized claims, failed ETH reception, fee collection, complete liquidity removal, and approval revocation.
 
 Security status: unaudited research prototype. Official Universal Router and PositionManager integration is not validated. No production routing approval, independent economic validation, organic volume, or profitability is claimed. Manipulable endogenous price signals and first-trade adverse selection remain limitations. Testnet results are not a mainnet safety endorsement.
 
