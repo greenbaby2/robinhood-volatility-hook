@@ -1,6 +1,6 @@
 # Robinhood Chain volatility hook research
 
-This project evaluates Gemini's dynamic-fee and developer-royalty proposal. It includes real PoolManager integration tests and a completed wallet-signed testnet lifecycle rehearsal, with live state recorded in `reports/testnet-readback.json`. It is not an audited strategy or a guarantee of yield. See `HOOKR_SUBMISSION.md` for the publication draft and remaining source-publication requirements.
+This project evaluates Gemini's dynamic-fee and developer-royalty proposal. It includes real PoolManager integration tests and a completed wallet-signed testnet lifecycle rehearsal, with live state recorded in `reports/testnet-readback.json`. It is not an audited strategy or a guarantee of yield. See `HOOKR_SUBMISSION.md` for the publication draft and remaining review evidence.
 
 Start with [the testnet setup and costs](TESTNET.md). Read [the mainnet feasibility assessment](MAINNET_ASSESSMENT.md) before considering real capital. The broader strategy is in [the review and deployment roadmap](ROADMAP.md).
 
@@ -25,7 +25,7 @@ npm.cmd run compile
 
 The bundled npm test runner is Windows-specific. On other systems, install Foundry and run `forge test -vv`. Foundry downloads Solidity 0.8.26 on first use. The npm compiler is also pinned to 0.8.26. Both builds target Cancun with 200 optimizer runs.
 
-Validation: the original 25 Solidity tests passed, including 1,024 fuzz cases across fee bounds and real settlement. An additional test demonstrates the economic weakness of the fee signal under split trades. Seven browser-signing guard tests passed using a mocked wallet provider. The 16-transaction lifecycle was first simulated and then completed on testnet; live postconditions are in reports/testnet-readback.json. This does not establish compatibility with the official Universal Router or PositionManager, a Hookr listing, or profitability. The patched npm toolchain audit reports zero known vulnerabilities. The GitHub workflow is prepared but has not run on hosted CI.
+Validation: all 26 Solidity tests passed, including 1,024 fuzz cases across fee bounds and real settlement. The split-trade test demonstrates the economic weakness of the fee signal. Seven browser-signing guard tests passed using a mocked wallet provider. The 16-transaction lifecycle was first simulated and then completed on testnet; live postconditions are in reports/testnet-readback.json. This does not establish compatibility with the official Universal Router or PositionManager, a Hookr listing, or profitability. The patched npm toolchain audit reports zero known vulnerabilities. The [GitHub workflow passed from a fresh hosted checkout](https://github.com/greenbaby2/robinhood-volatility-hook/actions/runs/37418707027), including pinned dependency restoration, Solidity tests, and signing-page tests.
 
 ## Files
 
