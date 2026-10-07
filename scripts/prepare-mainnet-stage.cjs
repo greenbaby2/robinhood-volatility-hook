@@ -31,11 +31,11 @@ const txs=run.transactions.map((item,i)=>{
   const asAddress=w=>'0x'+w.slice(-40).toLowerCase();
   const revocation=i>=(stage==='fund'?5:1);
   if(signatures[i]==='approve(address,uint256)') {
-    const cap=revocation?0n:targets[i]===weth?4000000000000000n:12000000n;
+    const cap=revocation?0n:targets[i]===weth?19000000000000000n:50000000n;
     if(words.length!==2 || asAddress(words[0])!==permit || BigInt('0x'+words[1])!==cap) throw Error('ERC20 approval exceeds policy');
   } else if(signatures[i]==='approve(address,address,uint160,uint48)') {
     const token=asAddress(words[0]);
-    const cap=revocation?0n:token===weth?4000000000000000n:12000000n;
+    const cap=revocation?0n:token===weth?19000000000000000n:50000000n;
     if(words.length!==4 || ![weth,usdg].includes(token) || asAddress(words[1])!==pm || BigInt('0x'+words[2])!==cap) throw Error('Permit2 approval exceeds policy');
     if(!revocation) deadline=Number(BigInt('0x'+words[3]));
   } else {

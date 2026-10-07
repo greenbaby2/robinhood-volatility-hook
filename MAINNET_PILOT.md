@@ -1,10 +1,10 @@
 # WETH/USDG pilot handoff
 
-Engineering rehearsal complete; no real deployment, swap, approval or deposit has been sent. This is an unaudited technical pilot, not an established income strategy. Original testnet evidence belongs to VolatilityRoyaltyHook. The new CumulativeVolatilityHook has a different address/bytecode and has only been deployed inside local forks.
+Engineering rehearsal complete. CumulativeVolatilityHook is deployed on Robinhood mainnet at `0x2de9d39ff7b49ba0f28b5dc17c7567f1221350c4`; runtime and immutable configuration have been verified locally. The funding plan is prepared but its execution is not yet confirmed. This is an unaudited technical pilot, not an established income strategy. Original testnet evidence belongs to the separate VolatilityRoyaltyHook prototype.
 
 ## Amounts and current status
 
-The first deposit is capped at **0.004 WETH plus 12 USDG**, approximately 22.80 USDG of combined value at the sampled WETH price. This is well below the user's under-$250 liquidity budget. Keep native ETH separately for gas; native ETH does not satisfy a WETH balance check. No asset purchase or wrapping has been performed.
+The active funding plan is capped at **0.019 WETH plus 50 USDG**, approximately 100 USDG of combined value at a WETH price near 2,620 USDG. This replaces the earlier smaller rehearsal cap at the user's request. Exact spending depends on the price range and rounding; these are maxima, not guaranteed deposited amounts. Keep native ETH separately for gas; native ETH does not satisfy a WETH balance check.
 
 Run the read-only preflight to check current balances and shortfalls locally. Its financial report is saved under the Git-ignored `signer-state` directory. Existing ETH may cover asset acquisition; determine this from fresh local balances and quotes. Do not send money to the hook address. Assets remain in your wallet until the PositionManager pulls the exact approved amounts while minting your LP NFT.
 

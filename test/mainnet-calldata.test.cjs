@@ -9,9 +9,9 @@ const call=(sig,args)=>keccak_256(sig).slice(0,8)+args;
 const wallet='0xfe6fac6620c89f7dda96d1b3c34300c75abbe6b8';
 const weth='0x0bd7d308f8e1639fab988df18a8011f41eacad73',usdg='0x5fc5360d0400a0fd4f2af552add042d716f1d168';
 const hook='0x00000000000000000000000000000000000010c4';
-function fixture({cap=4000000000000000n,recipient=wallet,otherHook=hook,actions='020d',stage='fund'}={}) {
+function fixture({cap=19000000000000000n,recipient=wallet,otherHook=hook,actions='020d',stage='fund'}={}) {
   const key=[weth,usdg,0x800000,60,otherHook].map(word).join('');
-  const params=stage==='fund'?[key+[-197940,-196740,123,cap,12000000,recipient,384,0].map(word).join(''),word(weth)+word(usdg)]:
+  const params=stage==='fund'?[key+[-197940,-196740,123,cap,50000000,recipient,384,0].map(word).join(''),word(weth)+word(usdg)]:
     [[100,1,1,128,0].map(word).join(''),[weth,usdg,recipient].map(word).join('')];
   const actionsEncoded=bytes(stage==='fund'?actions:'0311');
   const unlock=word(64)+word(64+actionsEncoded.length/2)+actionsEncoded+array(params);
@@ -22,7 +22,7 @@ function fixture({cap=4000000000000000n,recipient=wallet,otherHook=hook,actions=
 }
 test('accepts bounded pilot mint encoding',()=>assert.equal(validatePositionCall('fund',fixture(),hook),2000000000));
 test('accepts quoted exit encoding',()=>assert.equal(validatePositionCall('exit',fixture({stage:'exit'}),hook),2000000000));
-test('rejects excessive mint approval cap',()=>assert.throws(()=>validatePositionCall('fund',fixture({cap:4000000000000001n}),hook),/caps/));
+test('rejects excessive mint approval cap',()=>assert.throws(()=>validatePositionCall('fund',fixture({cap:19000000000000001n}),hook),/caps/));
 test('rejects another recipient',()=>assert.throws(()=>validatePositionCall('fund',fixture({recipient:'0x1234'}),hook),/recipient/));
 test('rejects a different hook',()=>assert.throws(()=>validatePositionCall('fund',fixture({otherHook:'0x1234'}),hook),/key/));
 test('rejects substituted actions',()=>assert.throws(()=>validatePositionCall('fund',fixture({actions:'050d'}),hook),/actions/));

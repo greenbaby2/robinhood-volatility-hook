@@ -46,11 +46,11 @@ const selector = s => keccak_256(s).slice(0,8);
   const report = {checkedAt:new Date().toISOString(),chainId:4663,block:Number(BigInt(block)),addresses,codeHashes:codes,
     reference:{tick:Number(tick),sqrtPriceX96:sqrt.toString(),approxUSDGPerWETH:price,source:'v3 spot; independent price review required'},
     wallet:{nativeETH:Number(eth)/1e18,weth:Number(weth)/1e18,usdg:Number(usdg)/1e6},
-    pilotCaps:{weth:0.004,usdg:12},
-    shortfall:{weth:Number(weth<4000000000000000n?4000000000000000n-weth:0n)/1e18,
-      usdg:Number(usdg<12000000n?12000000n-usdg:0n)/1e6},
+    pilotCaps:{weth:0.019,usdg:50},
+    shortfall:{weth:Number(weth<19000000000000000n?19000000000000000n-weth:0n)/1e18,
+      usdg:Number(usdg<50000000n?50000000n-usdg:0n)/1e6},
     gasPriceWei:BigInt(await rpc('eth_gasPrice',[])).toString(),
-    fundingReady:weth>=4000000000000000n && usdg>=12000000n,
+    fundingReady:weth>=19000000000000000n && usdg>=50000000n,
     note:'Read-only balances and contract preflight, not a security audit or transaction approval. Native ETH is separate from WETH. Code hashes describe this block; proxy implementation upgrades need separate review.'};
   fs.mkdirSync('signer-state',{recursive:true});
   fs.writeFileSync('signer-state/mainnet-preflight.json',JSON.stringify(report,null,2)+'\n');

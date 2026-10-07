@@ -4,7 +4,7 @@ This project evaluates Gemini's dynamic-fee and developer-royalty proposal. It i
 
 Start with [the testnet setup and costs](TESTNET.md). Read [the mainnet feasibility assessment](MAINNET_ASSESSMENT.md) before considering real capital. The broader strategy is in [the review and deployment roadmap](ROADMAP.md).
 
-The new [WETH/USDG pilot handoff](MAINNET_PILOT.md) covers `CumulativeVolatilityHook`, official periphery fork tests, capped funding/exit scripts, mainnet preflight and a separate wallet signing page. No real mainnet transactions have been sent. The original prototype and its testnet evidence below remain available for comparison.
+The new [WETH/USDG pilot handoff](MAINNET_PILOT.md) covers the deployed `CumulativeVolatilityHook`, official periphery fork tests, capped funding/exit scripts, mainnet preflight and a separate wallet signing page. The active deposit cap is 0.019 WETH plus 50 USDG; LP funding has not yet been confirmed. The original prototype and its testnet evidence below remain available for comparison.
 
 ## Prototype behavior
 

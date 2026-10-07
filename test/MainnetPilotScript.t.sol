@@ -16,8 +16,8 @@ contract MainnetPilotScriptTest is Test {
         vm.setEnv("PILOT_CODEHASH", vm.toString(address(hook).codehash));
         (,int24 tick,,,,,) = PilotReferencePool(PilotAddresses.REFERENCE).slot0();
         vm.setEnv("REVIEWED_REFERENCE_TICK", vm.toString(int256(tick)));
-        deal(PilotAddresses.WETH, PilotAddresses.WALLET, 0.004 ether);
-        deal(PilotAddresses.USDG, PilotAddresses.WALLET, 12e6);
+        deal(PilotAddresses.WETH, PilotAddresses.WALLET, 0.019 ether);
+        deal(PilotAddresses.USDG, PilotAddresses.WALLET, 50e6);
         PilotPositionManager pm = PilotPositionManager(PilotAddresses.POSITION);
         uint256 tokenId = pm.nextTokenId();
         (new FundMainnetPilot()).run();
@@ -29,8 +29,8 @@ contract MainnetPilotScriptTest is Test {
         vm.setEnv("EXIT_MIN_USDG", "1");
         (new ExitMainnetPilot()).run();
         vm.expectRevert(); pm.ownerOf(tokenId);
-        assertGe(PilotToken(PilotAddresses.WETH).balanceOf(PilotAddresses.WALLET), 0.004 ether - 2);
-        assertGe(PilotToken(PilotAddresses.USDG).balanceOf(PilotAddresses.WALLET), 12e6 - 2);
+        assertGe(PilotToken(PilotAddresses.WETH).balanceOf(PilotAddresses.WALLET), 0.019 ether - 2);
+        assertGe(PilotToken(PilotAddresses.USDG).balanceOf(PilotAddresses.WALLET), 50e6 - 2);
         _assertRevoked();
     }
     function _assertRevoked() internal view {

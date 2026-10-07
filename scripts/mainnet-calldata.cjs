@@ -39,7 +39,7 @@ function validatePositionCall(stage,data,hook) {
   const args=arrayAt(unlock,numberAt(unlock,32));
   if(stage==='fund') {
     if(actions!=='020d'||args[1]!==word(weth)+word(usdg)) throw Error('Unexpected mint actions');
-    if(args[0].slice(0,320)!==key || at(args[0],256)!==word(4000000000000000n) || at(args[0],288)!==word(12000000) || at(args[0],320)!==word(wallet)) throw Error('Wrong mint key, caps or recipient');
+    if(args[0].slice(0,320)!==key || at(args[0],256)!==word(19000000000000000n) || at(args[0],288)!==word(50000000) || at(args[0],320)!==word(wallet)) throw Error('Wrong mint key, caps or recipient');
     const lower=BigInt.asIntN(24,BigInt('0x'+at(args[0],160))), upper=BigInt.asIntN(24,BigInt('0x'+at(args[0],192)));
     if(upper-lower!==1200n||lower%60n||upper%60n||lower < -887272n||upper>887272n||BigInt('0x'+at(args[0],224))===0n) throw Error('Unexpected range or zero liquidity');
     if(bytesAt(args[0],numberAt(args[0],352))!=='') throw Error('Unexpected hook data');

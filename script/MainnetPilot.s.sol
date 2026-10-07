@@ -65,7 +65,7 @@ contract DeployMainnetPilot is PilotScript {
     }
 }
 
-/// Small pilot only: cap at 0.004 WETH + 12 USDG. No asset acquisition or wrapping.
+/// Small pilot only: cap at 0.019 WETH + 50 USDG. No asset acquisition or wrapping.
 contract FundMainnetPilot is PilotScript {
     using PoolIdLibrary for PoolKey;
     using StateLibrary for IPoolManager;
@@ -80,18 +80,18 @@ contract FundMainnetPilot is PilotScript {
         // The operator must independently review the reference against a fresh external market quote.
         int256 difference = int256(tick) - vm.envInt("REVIEWED_REFERENCE_TICK");
         require(difference >= -10 && difference <= 10, "Requote price");
-        require(PilotToken(PilotAddresses.WETH).balanceOf(PilotAddresses.WALLET) >= 0.004 ether, "Need 0.004 WETH");
-        require(PilotToken(PilotAddresses.USDG).balanceOf(PilotAddresses.WALLET) >= 12e6, "Need 12 USDG");
+        require(PilotToken(PilotAddresses.WETH).balanceOf(PilotAddresses.WALLET) >= 0.019 ether, "Need 0.019 WETH");
+        require(PilotToken(PilotAddresses.USDG).balanceOf(PilotAddresses.WALLET) >= 50e6, "Need 50 USDG");
         int24 center = tick / 60 * 60;
         if (tick < 0 && tick % 60 != 0) center -= 60;
         uint128 liquidity = LiquidityAmounts.getLiquidityForAmounts(sqrtPrice,
-            TickMath.getSqrtPriceAtTick(center - 600), TickMath.getSqrtPriceAtTick(center + 600), 0.004 ether, 12e6);
+            TickMath.getSqrtPriceAtTick(center - 600), TickMath.getSqrtPriceAtTick(center + 600), 0.019 ether, 50e6);
         liquidity = uint128(uint256(liquidity) * 995 / 1000); // 0.5% input headroom for fixed liquidity
         uint256 deadline = block.timestamp + 1200;
         vm.startBroadcast(PilotAddresses.WALLET);
         for (uint256 i; i < 2; ++i) {
             address token = i == 0 ? PilotAddresses.WETH : PilotAddresses.USDG;
-            uint160 cap = uint160(i == 0 ? 0.004 ether : 12e6);
+            uint160 cap = uint160(i == 0 ? 0.019 ether : 50e6);
             require(PilotToken(token).approve(PilotAddresses.PERMIT2, cap));
             PilotPermit2(PilotAddresses.PERMIT2).approve(token, PilotAddresses.POSITION, cap, uint48(deadline));
         }
@@ -99,7 +99,7 @@ contract FundMainnetPilot is PilotScript {
         bytes[] memory calls = new bytes[](2);
         calls[0] = abi.encodeCall(position.initializePool, (key, sqrtPrice));
         calls[1] = abi.encodeCall(position.modifyLiquidities,
-            (PilotActions.mint(key, center - 600, center + 600, liquidity, 0.004 ether, 12e6, PilotAddresses.WALLET), deadline));
+            (PilotActions.mint(key, center - 600, center + 600, liquidity, 0.019 ether, 50e6, PilotAddresses.WALLET), deadline));
         position.multicall(calls);
         revoke();
         vm.stopBroadcast();
